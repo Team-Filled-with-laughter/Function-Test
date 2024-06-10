@@ -1,0 +1,23 @@
+#include <Wire.h>
+
+int data = 0;
+const int Address = 0x50;
+
+void setup()
+{
+  Serial.begin(9600);
+  Wire.begin(Address);
+  Wire.onReceive(receiveEvent);
+}
+
+void receiveEvent(int bytes) {
+  data = Wire.read();
+  Serial.print("Receive Data : ");
+  Serial.println(data);
+}
+
+void loop()
+{
+  
+}
+
